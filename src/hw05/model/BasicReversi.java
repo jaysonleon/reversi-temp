@@ -23,6 +23,9 @@ public class BasicReversi extends AbstractReversi {
     super(sideLength, true);
   }
 
+  // new
+  
+
 
 
 }
