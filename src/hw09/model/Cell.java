@@ -21,6 +21,18 @@ public class Cell implements Tile {
     this.state = Player.EMPTY;
   }
 
+  /**
+   * Convenience constructor for testing purposes.
+   * @param x x coordinate of the cell
+   * @param y y coordinate of the cell
+   * @param state state of the cell
+   */
+  public Cell(int x, int y, Player state) {
+    this.x = x;
+    this.y = y;
+    this.state = state;
+  }
+
   @Override
   public int getQ() {
     return this.x;
@@ -84,9 +96,19 @@ public class Cell implements Tile {
 
   @Override
   public int hashCode() {
-    return this.x * 31 + this.y * 31 + this.state.hashCode();
+    return this.x * 31 + this.y * 31 + this.hashCodeHelper(this.state);
   }
 
+  private int hashCodeHelper(Player p) {
+    switch (p) {
+      case BLACK:
+        return 1;
+      case WHITE:
+        return 2;
+      default:
+        return 0;
+    }
+  }
   public String toString() {
     return this.state.toString();
   }

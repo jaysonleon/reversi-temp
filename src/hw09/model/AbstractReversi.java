@@ -223,17 +223,23 @@ public class AbstractReversi implements ReversiModel {
 
   @Override
   public Board copyBoard() {
-    HexBoard newHexBoard = new HexBoard(this.dim);
+    Board newBoard;
+    if (this.isHex) {
+      newBoard = new HexBoard(this.dim);
+    } else {
+      newBoard = new SquareBoard(this.dim);
+    }
+
     for (int r = 0; r < this.dim; r++) {
       for (int q = 0; q < this.dim; q++) {
         Tile hex = this.getTileAt(q, r);
         if (hex != null) {
-          newHexBoard.setTileAt(q, r);
-          newHexBoard.getTileAt(q, r).changePlayer(hex.getPlayerAt());
+          newBoard.setTileAt(q, r);
+          newBoard.getTileAt(q, r).changePlayer(hex.getPlayerAt());
         }
       }
     }
-    return newHexBoard;
+    return newBoard;
   }
 
   @Override
@@ -249,7 +255,7 @@ public class AbstractReversi implements ReversiModel {
     // check all directions
     for (int[] direction : directions) {
       // get the tiles in the direction
-      List<Tile> tiles = getHexesInDirection(q, r, direction);
+      List<Tile> tiles = getTilesInDirection(q, r, direction);
       // if the direction is valid, the move is valid
       if (isValidDirection(tiles, player)) {
         result = true;
@@ -263,7 +269,7 @@ public class AbstractReversi implements ReversiModel {
   public int moveScore(int q, int r) {
     List<Tile> flippedTiles = new ArrayList<>();
     for (int[] direction : this.getValidDirections(q, r, this.turn)) {
-      List<Tile> tiles = getHexesInDirection(q, r, direction);
+      List<Tile> tiles = getTilesInDirection(q, r, direction);
       if (isValidDirection(tiles, this.turn)) {
         for (Tile t : tiles) {
           if (t.getPlayerAt() == Player.EMPTY) {
@@ -277,7 +283,11 @@ public class AbstractReversi implements ReversiModel {
       }
     }
 
-    return flippedTiles.size() + 1;
+    if (flippedTiles.isEmpty()) {
+      return 0;
+    } else {
+      return flippedTiles.size() + 1;
+    }
   }
 
   @Override
@@ -315,7 +325,7 @@ public class AbstractReversi implements ReversiModel {
 
     for (int[] direction : directions) {
 
-      List<Tile> tiles = getHexesInDirection(q, r, direction);
+      List<Tile> tiles = getTilesInDirection(q, r, direction);
       // after tiles are collected, trim the list such that it starts and ends
       // with the current player's tiles
       if (isValidDirection(tiles, this.turn)) {
@@ -340,15 +350,15 @@ public class AbstractReversi implements ReversiModel {
   }
 
   /**
-   * Returns a list of hexes in the specified direction from the given hex.
-   * The list includes the hex at the given position, at index[0].
+   * Returns a list of tiles in the specified direction from the given tile.
+   * The list includes the tile at the given position, at index[0].
    *
    * @param q         the x coordinate of the starting hex
    * @param r         the y coordinate of the starting hex
    * @param direction the direction vector
-   * @return list of hexes in the specified direction
+   * @return list of tiles in the specified direction
    */
-  protected List<Tile> getHexesInDirection(int q, int r, int[] direction) {
+  protected List<Tile> getTilesInDirection(int q, int r, int[] direction) {
     List<Tile> tiles = new ArrayList<>();
     // validate coordinates
     if (q < 0 || q >= this.dim || r < 0 || r >= this.dim) {
@@ -385,7 +395,7 @@ public class AbstractReversi implements ReversiModel {
    * to a straight line of the opponent player's disks,
    * at the far end of which is another player's disk.
    *
-   * @param tiles  the list of hexes in the direction
+   * @param tiles  the list of tiles in the direction
    * @param player the player making the move
    * @return true if the direction is valid, false otherwise
    */
@@ -436,7 +446,7 @@ public class AbstractReversi implements ReversiModel {
     // check all directions
     for (int[] direction : directions) {
       // get the tiles in the direction
-      List<Tile> tiles = getHexesInDirection(q, r, direction);
+      List<Tile> tiles = getTilesInDirection(q, r, direction);
       // if the direction is valid, add it to the list
       if (isValidDirection(tiles, player)) {
         validDirections.add(direction);

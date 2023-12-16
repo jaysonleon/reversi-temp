@@ -312,6 +312,7 @@ public class TestBasicReversi {
   @Test
   public void testMoveScore() {
     m.startGame();
+    Assert.assertEquals(0, m.moveScore(0, 5));
     Assert.assertEquals(2, m.moveScore(3, 6));
     m.playMove(3,6);
     m.playMove(2,6);

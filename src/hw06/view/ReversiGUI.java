@@ -20,7 +20,7 @@ import hw06.model.ReadonlyReversiModel;
  *   interact with the game.
  */
 public class ReversiGUI extends JFrame implements ReversiView {
-  private final ReversiPanel panel;
+  private final HexReversiPanel panel;
   private final JButton quitButton;
   private MouseEvent lastMouseEvent;
 
@@ -38,7 +38,7 @@ public class ReversiGUI extends JFrame implements ReversiView {
 
     // main panel uses border layout,drawing panel in center and button panel in south
     this.setLayout(new BorderLayout());
-    panel = new ReversiPanel(model);
+    panel = new HexReversiPanel(model);
     this.add(panel, BorderLayout.CENTER);
 
     // button panel

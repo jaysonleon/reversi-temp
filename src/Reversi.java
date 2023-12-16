@@ -20,14 +20,10 @@ import hw07.model.HumanReversiPlayer;
 import hw07.model.MachineReversiPlayer;
 import hw07.model.ReversiPlayer;
 import hw08.strategy.ProvStratToOurStratAdapter;
-import hw08.model.ModelToProvModelAdapter;
-import hw08.view.ProvViewToOurViewAdapter;
 import hw09.model.AbstractReversi;
-import provider.model.ReadOnlyReversiModel;
 import provider.strategy.AvoidHexNearCornersStrategy;
 import provider.strategy.GreedyStrategy;
 import provider.strategy.TakeCornerStrategy;
-import provider.view.SimpleReversiView;
 
 /**
  * Runs reversi.
@@ -116,10 +112,10 @@ public final class Reversi {
       }
     } else {
       if (isHex) {
-        model = new AbstractReversi(6, isHex);
+        model = new AbstractReversi(6, true);
         scan.next();
       } else {
-        model = new AbstractReversi(8, isHex);
+        model = new AbstractReversi(8, false);
         scan.next();
 
       }
@@ -159,7 +155,7 @@ public final class Reversi {
     if (type.equalsIgnoreCase("Human") || type.equalsIgnoreCase("H")) {
       return new HumanReversiPlayer(piece);
     } else {
-      return new MachineReversiPlayer(model, createStrategy(scan, model), piece);
+      return new MachineReversiPlayer(model, createStrategy(scan), piece);
     }
   }
 
@@ -169,14 +165,13 @@ public final class Reversi {
    * @param scan the scanner
    * @return a strategy object to represent the strategy
    */
-  private static InfallibleReversiStrategy createStrategy(Scanner scan,
-                                                          ReadonlyReversiModel model) {
+  private static InfallibleReversiStrategy createStrategy(Scanner scan) {
     String stratType = scan.next();
     if (stratType.equalsIgnoreCase("single")
             || stratType.equalsIgnoreCase("s")) {
-      return getSingleStrategy(scan, model);
+      return getSingleStrategy(scan);
     } else {
-      return new CompleteStrategy(getMultiStrategy(scan, model));
+      return new CompleteStrategy(getMultiStrategy(scan));
     }
   }
 
@@ -187,8 +182,7 @@ public final class Reversi {
    * @param scan the scanner
    * @return a strategy object to represent the strategy
    */
-  private static InfallibleReversiStrategy getSingleStrategy(Scanner scan,
-                                                             ReadonlyReversiModel model) {
+  private static InfallibleReversiStrategy getSingleStrategy(Scanner scan) {
     String strat = scan.next();
     InfallibleReversiStrategy strategy;
 
@@ -223,8 +217,7 @@ public final class Reversi {
    * @param scan the scanner
    * @return a strategy object to represent the strategy
    */
-  private static FallibleReversiStrategy getMultiStrategy(Scanner scan,
-                                                          ReadonlyReversiModel model) {
+  private static FallibleReversiStrategy getMultiStrategy(Scanner scan) {
     int numStrats = scan.nextInt();
 
     List<FallibleReversiStrategy> strats = new ArrayList<>();

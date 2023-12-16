@@ -24,7 +24,7 @@ public class BasicReversi extends AbstractReversi {
   }
 
   // new
-  
+
 
 
 
