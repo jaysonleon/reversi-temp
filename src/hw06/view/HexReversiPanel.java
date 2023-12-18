@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- * Represents the drawing panel for the Reversi game.
+ * Represents the drawing panel for the Reversi game, played with a hexagonal board.
  */
 public class HexReversiPanel extends JPanel {
 
@@ -269,7 +269,7 @@ public class HexReversiPanel extends JPanel {
   }
 
   /**
-   * Prints the move at the given hex.
+   * Prints the move at the given Tile.
    *
    * @param h the hex
    */
@@ -291,10 +291,10 @@ public class HexReversiPanel extends JPanel {
   }
 
   /**
-   * Shows the given message.
+   * Shows the given message in a pop-up window.
    *
    * @param message the message to show
-   * */
+   */
   public void showMessage(String message) {
     JOptionPane.showMessageDialog(this, message);
   }

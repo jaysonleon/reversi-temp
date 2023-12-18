@@ -13,7 +13,7 @@ import hw06.strategy.FallibleReversiStrategy;
 import hw06.strategy.InfallibleReversiStrategy;
 import hw06.strategy.MovetoCorner;
 import hw06.model.ReadonlyReversiModel;
-import hw06.view.ReversiGUI;
+import hw06.view.HexReversiGUI;
 import hw06.view.ReversiView;
 import hw07.controller.NewController;
 import hw07.model.HumanReversiPlayer;
@@ -21,6 +21,7 @@ import hw07.model.MachineReversiPlayer;
 import hw07.model.ReversiPlayer;
 import hw08.strategy.ProvStratToOurStratAdapter;
 import hw09.model.AbstractReversi;
+import hw09.view.SquareReversiGUI;
 import provider.strategy.AvoidHexNearCornersStrategy;
 import provider.strategy.GreedyStrategy;
 import provider.strategy.TakeCornerStrategy;
@@ -76,13 +77,22 @@ public final class Reversi {
   //    ReversiView v1 = new ReversiGUI(n);
   //    ReversiView v2 = new ProvViewToOurViewAdapter(adapter, view);
 
-    ReversiView v1 = new ReversiGUI(n);
-    ReversiView v2 = new ReversiGUI(n);
+    ReversiView v1;
+    ReversiView v2;
 
+    model.startGame();
+    boolean isHex = model.isHex();
+    if (isHex) {
+      v1 = new HexReversiGUI(n);
+      v2 = new HexReversiGUI(n);
+    } else {
+      v1 = new SquareReversiGUI(n);
+      v2 = new SquareReversiGUI(n);
+    }
 
     NewController c1 = new NewController(model, player1, v1);
     NewController c2 = new NewController(model, player2, v2);
-    model.startGame();
+
   }
 
   /**

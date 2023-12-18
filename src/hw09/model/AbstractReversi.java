@@ -463,4 +463,9 @@ public class AbstractReversi implements ReversiModel {
   private int[][] determineDirection() {
     return this.isHex ? HEX_DIRECTIONS : SQUARE_DIRECTIONS;
   }
+
+  @Override
+  public boolean isHex() {
+    return this.isHex;
+  }
 }

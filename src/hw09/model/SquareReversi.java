@@ -14,6 +14,7 @@ public class SquareReversi extends AbstractReversi {
 
   /**
    * Constructor that takes in a sideLength, creates a board with dim = sideLength.
+   *
    * @param sideLength length of one side of the board
    */
   public SquareReversi(int sideLength) {

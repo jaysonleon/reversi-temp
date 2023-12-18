@@ -22,10 +22,4 @@ public class BasicReversi extends AbstractReversi {
   public BasicReversi(int sideLength) {
     super(sideLength, true);
   }
-
-  // new
-
-
-
-
 }

@@ -1,7 +1,6 @@
 package hw06.model;
 
 import hw05.model.Player;
-import hw05.model.HexBoard;
 import hw09.model.Board;
 import hw09.model.Tile;
 
@@ -136,4 +135,10 @@ public interface ReadonlyReversiModel {
    * @return true if the given player has any valid moves left in the game
    */
   boolean hasValidMoves(Player player);
+
+  /**
+   * Returns true if this game of reversi is hex-based or not.
+   * @return true if this game of reversi is hex-based
+   */
+  boolean isHex();
 }

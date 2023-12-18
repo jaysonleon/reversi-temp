@@ -14,6 +14,7 @@ public class SquareBoard implements Board {
 
   /**
    * Constructs a SquareBoard object with the given dimension.
+   *
    * @param dim dimension of the board
    */
   public SquareBoard(int dim) {

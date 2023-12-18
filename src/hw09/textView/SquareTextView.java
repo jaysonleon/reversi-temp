@@ -7,10 +7,11 @@ import hw05.view.TextualView;
  * Represents a string representation of the Square Reversi game board.
  */
 public class SquareTextView implements TextualView {
-private final ReversiModel model;
+  private final ReversiModel model;
 
   /**
    * Constructs a SquareTextView object with the given model.
+   *
    * @param model the model
    */
   public SquareTextView(ReversiModel model) {

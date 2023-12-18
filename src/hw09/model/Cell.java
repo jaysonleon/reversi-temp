@@ -12,6 +12,7 @@ public class Cell implements Tile {
 
   /**
    * Constructs a SquareCell object with the given x and y coordinates.
+   *
    * @param x x coordinate of the cell
    * @param y y coordinate of the cell
    */
@@ -23,8 +24,9 @@ public class Cell implements Tile {
 
   /**
    * Convenience constructor for testing purposes.
-   * @param x x coordinate of the cell
-   * @param y y coordinate of the cell
+   *
+   * @param x     x coordinate of the cell
+   * @param y     y coordinate of the cell
    * @param state state of the cell
    */
   public Cell(int x, int y, Player state) {
@@ -109,6 +111,7 @@ public class Cell implements Tile {
         return 0;
     }
   }
+
   public String toString() {
     return this.state.toString();
   }
