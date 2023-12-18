@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Reversi.jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Reversi_jar</output-path>
+    <root id="archive" name="reversi-temp.jar">
+      <element id="module-output" name="reversi-temp" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Reversi.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

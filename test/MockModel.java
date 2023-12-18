@@ -138,6 +138,13 @@ public class MockModel implements ReversiModel {
 
   @Override
   public boolean isGameOver() {
+    log.append("isGameOver()" + "\n");
     return model.isGameOver();
+  }
+
+  @Override
+  public boolean isHex() {
+    log.append("isHex()" + "\n");
+    return model.isHex();
   }
 }
