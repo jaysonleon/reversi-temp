@@ -1,17 +1,17 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import hw05.model.BasicReversi;
-import hw05.model.Player;
-import hw05.view.ReversiTextView;
-import hw06.model.ReadonlyReversiModel.Status;
+import model.model.HexReversi;
+import model.player.Player;
+import view.text.ReversiTextView;
+import model.model.ReadonlyReversiModel.Status;
 
 /**
  * Tests for the constructor of the Reversi game.
  */
 public class TestConstructor {
 
-  BasicReversi m = new BasicReversi();
+  HexReversi m = new HexReversi();
   ReversiTextView v = new ReversiTextView(m);
 
   @Test
@@ -134,14 +134,14 @@ public class TestConstructor {
 
   @Test
   public void testCustomGame() {
-    BasicReversi model = new BasicReversi(5);
+    HexReversi model = new HexReversi(5);
     model.startGame();
     Assert.assertEquals((5 * 2) - 1, model.getHeight());
   }
 
   @Test
   public void testSmallGameNoMovesLeft() {
-    BasicReversi model = new BasicReversi(3);
+    HexReversi model = new HexReversi(3);
     model.startGame();
     model.playMove(0,3);
     model.playMove(3,3);

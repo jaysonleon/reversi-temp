@@ -1,9 +1,8 @@
-import hw05.model.HexBoard;
-import hw05.model.Player;
-import hw05.model.ReversiModel;
-import hw07.model.ModelFeatures;
-import hw09.model.Board;
-import hw09.model.Tile;
+import model.player.Player;
+import model.model.ReversiModel;
+import model.model.ModelFeatures;
+import model.model.Board;
+import model.model.Tile;
 
 /**
  * Represents a mock of the ReversiModel. Used for testing validity of strategies.

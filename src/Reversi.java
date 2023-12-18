@@ -2,26 +2,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import hw05.model.BasicReversi;
-import hw05.model.Player;
-import hw05.model.ReversiModel;
-import hw06.strategy.AvoidNextToCorner;
-import hw06.strategy.CaptureMax;
-import hw06.strategy.CombinedStrategy;
-import hw06.strategy.CompleteStrategy;
-import hw06.strategy.FallibleReversiStrategy;
-import hw06.strategy.InfallibleReversiStrategy;
-import hw06.strategy.MovetoCorner;
-import hw06.model.ReadonlyReversiModel;
-import hw06.view.HexReversiGUI;
-import hw06.view.ReversiView;
-import hw07.controller.NewController;
-import hw07.model.HumanReversiPlayer;
-import hw07.model.MachineReversiPlayer;
-import hw07.model.ReversiPlayer;
-import hw08.strategy.ProvStratToOurStratAdapter;
-import hw09.model.AbstractReversi;
-import hw09.view.SquareReversiGUI;
+import model.model.HexReversi;
+import model.player.Player;
+import model.model.ReversiModel;
+import strategy.AvoidNextToCorner;
+import strategy.CaptureMax;
+import strategy.CombinedStrategy;
+import strategy.CompleteStrategy;
+import strategy.FallibleReversiStrategy;
+import strategy.InfallibleReversiStrategy;
+import strategy.MovetoCorner;
+import model.model.ReadonlyReversiModel;
+import view.gui.HexReversiGUI;
+import view.gui.ReversiView;
+import controller.NewController;
+import model.player.HumanReversiPlayer;
+import model.player.MachineReversiPlayer;
+import model.player.ReversiPlayer;
+import adapter.ProvStratToOurStratAdapter;
+import model.model.AbstractReversi;
+import view.gui.SquareReversiGUI;
 import provider.strategy.AvoidHexNearCornersStrategy;
 import provider.strategy.GreedyStrategy;
 import provider.strategy.TakeCornerStrategy;
@@ -56,7 +56,7 @@ public final class Reversi {
     String str = sb.toString();
     Scanner scan = new Scanner(str);
 
-    ReversiModel model = new BasicReversi();
+    ReversiModel model = new HexReversi();
 
     model = makeModel(scan, model);
 

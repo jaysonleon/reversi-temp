@@ -1,8 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import hw05.model.BasicReversi;
-import hw05.view.ReversiTextView;
+import model.model.HexReversi;
+import view.text.ReversiTextView;
 
 
 /**
@@ -12,7 +12,7 @@ import hw05.view.ReversiTextView;
  */
 public class TestView {
 
-  BasicReversi m = new BasicReversi();
+  HexReversi m = new HexReversi();
   ReversiTextView v = new ReversiTextView(m);
 
   @Test
@@ -34,7 +34,7 @@ public class TestView {
 
   @Test
   public void ViewAfterMove() {
-    BasicReversi model = new BasicReversi(3);
+    HexReversi model = new HexReversi(3);
     ReversiTextView view = new ReversiTextView(model);
     model.startGame();
     model.playMove(0,3);

@@ -1,8 +1,8 @@
 import java.awt.geom.Point2D;
 
-import hw06.controller.ViewFeatures;
-import hw06.model.ReadonlyReversiModel;
-import hw06.view.ReversiView;
+import controller.ViewFeatures;
+import model.model.ReadonlyReversiModel;
+import view.gui.ReversiView;
 
 /**
  * Represents a mock of the ReversiGUI class for testing.

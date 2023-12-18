@@ -2,17 +2,17 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import hw05.model.BasicReversi;
-import hw05.model.Player;
-import hw05.model.ReversiModel;
-import hw06.model.ReadonlyReversiModel;
-import hw06.strategy.CaptureMax;
-import hw06.strategy.CompleteStrategy;
-import hw06.view.ReversiView;
-import hw07.controller.NewController;
-import hw07.model.HumanReversiPlayer;
-import hw07.model.MachineReversiPlayer;
-import hw07.model.ReversiPlayer;
+import model.model.HexReversi;
+import model.player.Player;
+import model.model.ReversiModel;
+import model.model.ReadonlyReversiModel;
+import strategy.CaptureMax;
+import strategy.CompleteStrategy;
+import view.gui.ReversiView;
+import controller.NewController;
+import model.player.HumanReversiPlayer;
+import model.player.MachineReversiPlayer;
+import model.player.ReversiPlayer;
 
 /**
  * Test the new completed controller for a Reversi game.
@@ -28,7 +28,7 @@ public class TestNewController {
     CompleteStrategy strat = new CompleteStrategy(new CaptureMax());
     StringBuilder log1 = new StringBuilder();
     StringBuilder log2 = new StringBuilder();
-    m = new MockModel(new BasicReversi(), log1);
+    m = new MockModel(new HexReversi(), log1);
     p1 = new HumanReversiPlayer(Player.BLACK);
     p2 = new HumanReversiPlayer(Player.WHITE);
 
@@ -38,7 +38,7 @@ public class TestNewController {
   @Test
   public void testPassingTurnsEndsGame() {
     StringBuilder log = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     mock.startGame();
     mock.pass();
     mock.pass();
@@ -50,7 +50,7 @@ public class TestNewController {
   @Test
   public void testPassDoesntEndGame() {
     StringBuilder log = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     HumanReversiPlayer p1 = new HumanReversiPlayer(Player.BLACK);
     HumanReversiPlayer p2 = new HumanReversiPlayer(Player.WHITE);
     ReversiView v = new MockView(mock, log);
@@ -67,7 +67,7 @@ public class TestNewController {
   @Test
   public void testMoveHuman1() {
     StringBuilder log = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     HumanReversiPlayer p1 = new HumanReversiPlayer(Player.BLACK);
     NewController c = new NewController(mock, p1, v);
     mock.startGame();
@@ -79,7 +79,7 @@ public class TestNewController {
   @Test
   public void testHumanMoveNotTheirTurn() {
     StringBuilder log = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     ReversiView v = new MockView(mock, log);
     NewController c1 = new NewController(mock, p1, v);
     NewController c2 = new NewController(mock, p2, v);
@@ -99,7 +99,7 @@ public class TestNewController {
   @Test
   public void testPassTurn() {
     StringBuilder log = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     ReversiView v = new MockView(mock, log);
     NewController c1 = new NewController(mock, p1, v);
     NewController c2 = new NewController(mock, p2, v);
@@ -115,7 +115,7 @@ public class TestNewController {
   @Test
   public void testPass2X() {
     StringBuilder log = new StringBuilder();
-    ReversiModel model = new MockModel(new BasicReversi(),log);
+    ReversiModel model = new MockModel(new HexReversi(),log);
     ReadonlyReversiModel n = model;
     model.startGame();
 
@@ -137,7 +137,7 @@ public class TestNewController {
   public void testHumanUpdateView() {
     StringBuilder log = new StringBuilder();
     StringBuilder log2 = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     ReversiView v = new MockView(mock, log);
     ReversiView v2 = new MockView(mock, log2);
     NewController c1 = new NewController(mock, p1, v);
@@ -155,7 +155,7 @@ public class TestNewController {
   public void testAIUpdateView() {
     StringBuilder log = new StringBuilder();
     StringBuilder log2 = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     ReversiView v = new MockView(mock, log);
     ReversiView v2 = new MockView(mock, log2);
     MachineReversiPlayer p3 = new MachineReversiPlayer(mock,
@@ -173,7 +173,7 @@ public class TestNewController {
     StringBuilder log = new StringBuilder();
     StringBuilder log2 = new StringBuilder();
     StringBuilder log3 = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     ReversiView v = new MockView(mock, log2);
     ReversiView v2 = new MockView(mock, log3);
     NewController c1 = new NewController(mock, p1, v);
@@ -200,7 +200,7 @@ public class TestNewController {
     StringBuilder log = new StringBuilder();
     StringBuilder log2 = new StringBuilder();
     StringBuilder log3 = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     ReversiView v = new MockView(mock, log2);
     ReversiView v2 = new MockView(mock, log3);
     NewController c1 = new NewController(mock, p1, v);
@@ -218,7 +218,7 @@ public class TestNewController {
     StringBuilder log = new StringBuilder();
     StringBuilder log2 = new StringBuilder();
     StringBuilder log3 = new StringBuilder();
-    ReversiModel mock = new MockModel(new BasicReversi(), log);
+    ReversiModel mock = new MockModel(new HexReversi(), log);
     ReversiView v = new MockView(mock, log2);
     ReversiView v2 = new MockView(mock, log3);
     NewController c1 = new NewController(mock, p1, v);

@@ -1,13 +1,12 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import hw05.model.BasicReversi;
-import hw05.model.Hex;
-import hw05.model.HexBoard;
-import hw05.model.Player;
-import hw05.model.ReversiModel;
-import hw09.model.Board;
-import hw09.model.SquareBoard;
+import model.model.HexReversi;
+import model.model.HexBoard;
+import model.player.Player;
+import model.model.ReversiModel;
+import model.model.Board;
+import model.model.SquareBoard;
 
 /**
  * Tests for the Board class.
@@ -29,7 +28,7 @@ public class TestBoard {
 
   @Test
   public void testHexCopyBoard() {
-    ReversiModel m = new BasicReversi();
+    ReversiModel m = new HexReversi();
     m.startGame();
     m.playMove(3,6);
     Board b1 = m.getBoard();

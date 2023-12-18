@@ -1,10 +1,10 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import hw05.model.Hex;
-import hw05.model.Player;
-import hw09.model.Cell;
-import hw09.model.Tile;
+import model.model.Hex;
+import model.player.Player;
+import model.model.Cell;
+import model.model.Tile;
 
 /**
  * Tests for Hex & Player classes.

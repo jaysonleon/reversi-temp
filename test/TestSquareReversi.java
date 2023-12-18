@@ -1,18 +1,16 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import hw05.model.Player;
-import hw05.model.ReversiModel;
-import hw05.view.ReversiTextView;
-import hw05.view.TextualView;
+import model.player.Player;
+import model.model.ReversiModel;
+import view.text.TextualView;
 
-import hw06.model.ReadonlyReversiModel.Status;
+import model.model.ReadonlyReversiModel.Status;
 
-import hw09.model.AbstractReversi;
-import hw09.model.Board;
-import hw09.model.Cell;
-import hw09.model.SquareReversi;
-import hw09.textView.SquareTextView;
+import model.model.Board;
+import model.model.Cell;
+import model.model.SquareReversi;
+import view.text.SquareTextView;
 
 public class TestSquareReversi {
 

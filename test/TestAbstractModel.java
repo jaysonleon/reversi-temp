@@ -1,8 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import hw05.model.ReversiModel;
-import hw09.model.AbstractReversi;
+import model.model.ReversiModel;
+import model.model.AbstractReversi;
 
 public class TestAbstractModel {
   ReversiModel hex = new AbstractReversi(6, true);

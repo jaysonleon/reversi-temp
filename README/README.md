@@ -46,15 +46,16 @@ The structure of the command line arguments is as follows:
     - strategy3: the adapted TakeCornerStrategy from our provider
 
 An example of how to manually set up a game with both of our views & strategies:
+
 ```java
-import hw05.model.Player;
-import hw06.model.ReadonlyReversiModel;
-import hw06.strategy.CompleteStrategy;
-import hw06.view.ReversiView;
-import hw07.controller.NewController;
-import hw07.model.HumanReversiPlayer;
-import hw07.model.MachineReversiPlayer;
-import hw07.model.ReversiPlayer;
+import model.player.HumanReversiPlayer;
+import model.player.Player;
+import model.model.ReadonlyReversiModel;
+import strategy.CompleteStrategy;
+import view.gui.ReversiView;
+import controller.NewController;
+import model.player.MachineReversiPlayer;
+import model.player.ReversiPlayer;
 
 class Main {
   void main(String args[]) {
@@ -76,10 +77,10 @@ To run the game above, the user would type the following in the terminal:
 An example of how to manually set up a game with player 1 using our implementation and player 2 using our provider's implementation:
 
 ```java
-import hw06.strategy.CompleteStrategy;
-import hw07.model.HumanReversiPlayer;
-import hw07.model.ReversiPlayer;
-import hw08.strategy.ProvStratToOurStratAdapter;
+import model.player.HumanReversiPlayer;
+import strategy.CompleteStrategy;
+import adapter.ProvStratToOurStratAdapter;
+import model.player.ReversiPlayer;
 import provider.strategy.GreedyStrategy;
 
 class Main {
@@ -91,7 +92,7 @@ class Main {
     ReversiView v1 = new ReversiView(n); // view for player 1
     ReversiView v2 = new ProvViewToOurViewAdapter(adapter, view); // adapter for our view to our provider's view interface
     ReversiPlayer p1 = new HumanReversiPlayer(Player.BLACK); // p1 is a human
-    ReversiPlayer p2 = new ProvPlayerToOurPlayerAdapter(adapter, new hw06.model.MachineReversiPlayer(adapter, Player.WHITE, new CompleteStrategy(new ProvStratToOurStratAdapter(new GreedyStrategy())))); // p2 is an AI, using 1 strategy, greedyStrategy
+    model.player.ReversiPlayer p2 = new ProvPlayerToOurPlayerAdapter(adapter, new hw06.model.player.MachineReversiPlayer(adapter, Player.WHITE, new CompleteStrategy(new ProvStratToOurStratAdapter(new GreedyStrategy())))); // p2 is an AI, using 1 strategy, greedyStrategy
     NewController c1 = new NewController(model, player1, v1); // controller for player 1
     NewController c2 = new NewController(model, player2, v2); // controller for player 2
   }

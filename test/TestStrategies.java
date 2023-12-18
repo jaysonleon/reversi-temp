@@ -5,21 +5,21 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import hw05.model.BasicReversi;
-import hw05.model.Player;
-import hw05.model.ReversiModel;
-import hw06.strategy.AvoidNextToCorner;
-import hw06.strategy.CaptureMax;
-import hw06.strategy.CombinedStrategy;
-import hw06.strategy.CompleteStrategy;
-import hw06.model.ReadonlyReversiModel;
-import hw06.strategy.MovetoCorner;
+import model.model.HexReversi;
+import model.player.Player;
+import model.model.ReversiModel;
+import strategy.AvoidNextToCorner;
+import strategy.CaptureMax;
+import strategy.CombinedStrategy;
+import strategy.CompleteStrategy;
+import model.model.ReadonlyReversiModel;
+import strategy.MovetoCorner;
 
 /**
  * Tests for strategies.
  */
 public class TestStrategies {
-  ReversiModel m = new BasicReversi();
+  ReversiModel m = new HexReversi();
 
   @Test
   public void testChooseBestMoveAtStart() {
@@ -77,7 +77,7 @@ public class TestStrategies {
 
   @Test
   public void testChooseMoveNoMoves() {
-    ReversiModel model = new BasicReversi(3);
+    ReversiModel model = new HexReversi(3);
     model.startGame();
     CompleteStrategy strat = new CompleteStrategy(new CaptureMax());
 
@@ -99,7 +99,7 @@ public class TestStrategies {
 
   @Test
   public void testCombinedStrategies() {
-    ReversiModel model = new BasicReversi(3);
+    ReversiModel model = new HexReversi(3);
     ReadonlyReversiModel n = model;
     model.startGame();
     CombinedStrategy s = new CombinedStrategy(new MovetoCorner(),
