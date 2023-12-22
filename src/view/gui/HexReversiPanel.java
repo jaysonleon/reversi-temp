@@ -197,13 +197,6 @@ public class HexReversiPanel extends JPanel {
   }
 
   /**
-   * Places a piece at the coordinates of the given mouseEvent.
-   */
-  public void placePiece() {
-    this.update(this.getGraphics());
-  }
-
-  /**
    * Returns the pixel coordinates of the given hex.
    *
    * @param hex the hex
@@ -287,7 +280,7 @@ public class HexReversiPanel extends JPanel {
    * Updates the view to the current model
    **/
   public void updateView() {
-    this.update(this.getGraphics());
+    this.repaint();
   }
 
   /**

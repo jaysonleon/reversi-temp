@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import controller.ViewFeatures;
+import hw05.model.ReversiModel;
 import model.model.ReadonlyReversiModel;
 
 /**
@@ -140,6 +141,7 @@ public class HexReversiGUI extends JFrame implements ReversiView {
     panel.updateView();
   }
 
+  @Override
   public void showMessage(String s) {
     panel.showMessage(s);
   }

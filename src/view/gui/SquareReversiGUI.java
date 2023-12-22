@@ -18,7 +18,6 @@ import model.model.ReadonlyReversiModel;
  */
 public class SquareReversiGUI extends JFrame implements ReversiView {
   private final SquareReversiPanel panel;
-
   private final JButton quitButton;
   private MouseEvent lastMouseEvent;
 

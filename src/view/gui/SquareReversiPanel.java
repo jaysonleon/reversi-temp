@@ -41,6 +41,7 @@ public class SquareReversiPanel extends JPanel {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
+
     Graphics2D g2d = (Graphics2D) g;
 
     this.setBackground(Color.BLACK);
@@ -76,11 +77,10 @@ public class SquareReversiPanel extends JPanel {
    * @param color the color to draw the cell
    */
   private void drawCellAndDisc(Tile cell, Color color) {
-    int x = cell.getQ() * CELL_SIZE;
-    int y = cell.getR() * CELL_SIZE;
-    Graphics2D g2d = (Graphics2D) this.getGraphics();
-    this.drawSquare(g2d, x, y, color);
-    this.drawDisc(g2d, x, y, cell.getPlayerAt(), cell);
+    int x = cell.getR() * CELL_SIZE;
+    int y = cell.getQ() * CELL_SIZE;
+    this.drawSquare((Graphics2D) this.getGraphics(), x, y, color);
+    this.drawDisc((Graphics2D) this.getGraphics(), x, y, cell.getPlayerAt(), cell);
   }
 
   /**
@@ -132,7 +132,8 @@ public class SquareReversiPanel extends JPanel {
    */
   public void selectHex(MouseEvent e) {
     try {
-      Tile cell = pixelToCell(e.getX(), e.getY());
+      Point2D coords = convertCoords(e);
+      Tile cell = model.getTileAt((int) coords.getX(), (int) coords.getY());
 
       if (selectedCell != null) {
         drawCellAndDisc(selectedCell, Color.GRAY);
@@ -148,18 +149,13 @@ public class SquareReversiPanel extends JPanel {
           selectedCell = cell;
         }
       }
-      this.printMove(cell);
+        this.printMove(cell);
     } catch (IllegalArgumentException ex) {
       if (selectedCell != null) {
         drawCellAndDisc(selectedCell, Color.GRAY);
       }
     }
   }
-
-  /**
-   * Places a piece at the coordinates of the given mouseEvent.
-   */
-  public void placePiece() { this.update(this.getGraphics()); }
 
   /**
    * Returns the pixel coordinates of the given tile.
@@ -219,7 +215,7 @@ public class SquareReversiPanel extends JPanel {
    * Updates the view to the current model
    */
   public void updateView() {
-    this.update(this.getGraphics());
+    this.repaint();
   }
 
   /**

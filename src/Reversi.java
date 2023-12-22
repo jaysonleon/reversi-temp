@@ -59,6 +59,7 @@ public final class Reversi {
     ReversiModel model = new HexReversi();
 
     model = makeModel(scan, model);
+    ReadonlyReversiModel n = model;
 
     String p1Type = scan.next();
     p1Type = getPlayerType(p1Type);
@@ -71,7 +72,7 @@ public final class Reversi {
     ReversiPlayer player2;
     player2 = createPlayer(p2Type, model, Player.WHITE, scan);
 
-    ReadonlyReversiModel n = model;
+
   //    ReadOnlyReversiModel adapter = new ModelToProvModelAdapter(model);
   //    SimpleReversiView view = new SimpleReversiView(adapter);
   //    ReversiView v1 = new ReversiGUI(n);
@@ -80,19 +81,20 @@ public final class Reversi {
     ReversiView v1;
     ReversiView v2;
 
-    model.startGame();
     boolean isHex = model.isHex();
     if (isHex) {
-      v1 = new HexReversiGUI(n);
-      v2 = new HexReversiGUI(n);
+      v1 = new HexReversiGUI(model);
+      v2 = new HexReversiGUI(model);
     } else {
-      v1 = new SquareReversiGUI(n);
-      v2 = new SquareReversiGUI(n);
+      v1 = new SquareReversiGUI(model);
+      v2 = new SquareReversiGUI(model);
     }
+
 
     NewController c1 = new NewController(model, player1, v1);
     NewController c2 = new NewController(model, player2, v2);
 
+    model.startGame();
   }
 
   /**

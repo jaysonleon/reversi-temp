@@ -86,7 +86,6 @@ public class NewController implements ViewFeatures, ModelFeatures, PlayerFeature
     System.exit(0);
   }
 
-  
   @Override
   public void updateView() {
     view.updateView();
